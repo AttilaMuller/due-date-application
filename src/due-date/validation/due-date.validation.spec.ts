@@ -1,5 +1,5 @@
 import { BadRequestException } from '@nestjs/common';
-import { DueDateVaildationUtil } from './due-date.validation.util';
+import { DueDateValidationUtil } from './due-date.validation.util';
 import { ValidationErrors } from './due-date.validation.errors';
 import { dueDateInputMock } from './due-date.input.mock';
 
@@ -25,7 +25,7 @@ describe('DueDateValidation', () => {
             let errorThrown: boolean = false;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 errorThrown = true;
             }
@@ -39,7 +39,7 @@ describe('DueDateValidation', () => {
             year = -1;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.YEAR_NOT_POSITIVE);
@@ -52,7 +52,7 @@ describe('DueDateValidation', () => {
             month = -1;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_MONTH);
@@ -65,7 +65,7 @@ describe('DueDateValidation', () => {
             month = 13;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_MONTH);
@@ -78,7 +78,7 @@ describe('DueDateValidation', () => {
             day = -1;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_DAY);
@@ -91,7 +91,7 @@ describe('DueDateValidation', () => {
             day = 32;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_DAY);
@@ -104,7 +104,7 @@ describe('DueDateValidation', () => {
             hours = 8;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_HOUR);
@@ -117,7 +117,7 @@ describe('DueDateValidation', () => {
             hours = 18;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_HOUR);
@@ -131,7 +131,7 @@ describe('DueDateValidation', () => {
             minutes = 1;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.EXCEEDS_17_HRS);
@@ -144,7 +144,7 @@ describe('DueDateValidation', () => {
             minutes = -1;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_MINUTES);
@@ -157,7 +157,7 @@ describe('DueDateValidation', () => {
             minutes = 60;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_MINUTES);
@@ -170,7 +170,7 @@ describe('DueDateValidation', () => {
             turnAround = -1;
 
             try {
-                DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+                DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
             } catch (error) {
                 expect(error).toBeInstanceOf(BadRequestException);
                 expect(error.message.message).toEqual(ValidationErrors.INVALID_TURNAROUND);

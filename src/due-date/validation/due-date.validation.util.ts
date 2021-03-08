@@ -1,7 +1,7 @@
 import { BadRequestException } from '@nestjs/common';
 import { ValidationErrors } from './due-date.validation.errors';
 
-export namespace DueDateVaildationUtil {
+export namespace DueDateValidationUtil {
     export function validate(year: number, month: number, day: number, hours: number, minutes: number, turnAround: number) {
         validateYear(year);
         validateMonth(month);

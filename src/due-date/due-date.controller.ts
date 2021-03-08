@@ -1,6 +1,6 @@
 import { BadRequestException, Body, Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { DueDateService } from './due-date.service';
-import { DueDateVaildationUtil } from './validation/due-date.validation.util';
+import { DueDateValidationUtil } from './validation/due-date.validation.util';
 
 @Controller('due-date')
 export class DueDateController {
@@ -15,7 +15,7 @@ export class DueDateController {
         @Param('minutes', ParseIntPipe) minutes: number,
         @Param('turnAround', ParseIntPipe) turnAround: number,
     ): Date {
-        DueDateVaildationUtil.validate(year, month, day, hours, minutes, turnAround);
+        DueDateValidationUtil.validate(year, month, day, hours, minutes, turnAround);
         const date: Date = new Date(Date.UTC(year, month - 1, day, hours, minutes));
 
         if (isNaN(date.getTime())) {
