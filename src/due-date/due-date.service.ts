@@ -52,8 +52,8 @@ export class DueDateService {
         returns extra days
     */
     private getExtraDaysFromWeekends(submittedDate: Date, daysNeeded: number): number {
-        let day = submittedDate.getDay() + 1;
-        let weekEnds = 0;
+        let day: number = submittedDate.getDay() + 1;
+        let weekEnds: number = 0;
 
         while (daysNeeded !== 0) {
             if (WEEKENDS.includes(day)) {
